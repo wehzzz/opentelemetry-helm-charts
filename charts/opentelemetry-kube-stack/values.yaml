@@ -420,12 +420,15 @@ defaultCRConfig:
   #   configMap:
   #     name: config
 
-  # Init containers for the collector
+  # Init containers for the collector. Rendered as Helm templates with the
+  # merged collector context, so entries can reference collector fields, e.g.
+  # image: "{{ .collector.image.repository }}:{{ .collector.image.tag }}".
   initContainers: []
   # - name: init-nginx
   #   image: nginx
 
-  # Additional containers for the collector
+  # Additional containers for the collector. Rendered as Helm templates with
+  # the merged collector context, like initContainers.
   additionalContainers: []
   # - name: additional-container
   #   image: busybox

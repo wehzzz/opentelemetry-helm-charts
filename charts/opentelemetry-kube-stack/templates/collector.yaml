@@ -263,11 +263,11 @@ spec:
   {{- end }}
   {{- with $collector.initContainers }}
   initContainers:
-  {{- toYaml . | nindent 4 }}
+  {{- tpl (toYaml .) $merged | nindent 4 }}
   {{- end }}
   {{- with $collector.additionalContainers }}
   additionalContainers:
-  {{- toYaml . | nindent 4 }}
+  {{- tpl (toYaml .) $merged | nindent 4 }}
   {{- end }}
   {{- with $collector.topologySpreadConstraints }}
   topologySpreadConstraints:
